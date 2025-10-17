@@ -5,9 +5,16 @@ import os
 import random
 import subprocess
 import tempfile
+try:
+    subprocess.run(["ffmpeg", "-version"], check=True)
+    print("ffmpeg доступний")
+except FileNotFoundError:
+    print("ffmpeg не знайдено")
+
 
 bot = telebot.TeleBot("8042129376:AAFQ7oSmFfep7UwrP1xwm4XpyzUF90TmTg8")
 
+print("Started")
 
 @bot.message_handler(commands=['start'])
 def start(msg):
@@ -50,6 +57,7 @@ def audio_to_voice(msg):
     os.remove(output_path)
 
     bot.send_message(msg.chat.id, "Done✅")
+    print("Audio")
 
 @bot.message_handler(content_types=['video'])
 def video_to_circle(msg):
@@ -102,5 +110,6 @@ def video_to_circle(msg):
     os.remove(output_path)
 
     bot.send_message(msg.chat.id, "Done✅")
+    print("Video")
 
 bot.infinity_polling()
