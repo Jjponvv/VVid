@@ -5,11 +5,16 @@ import os
 import random
 import subprocess
 import tempfile
+import os
+import subprocess
+
 try:
     subprocess.run(["ffmpeg", "-version"], check=True)
-    print("ffmpeg доступний")
 except FileNotFoundError:
-    print("ffmpeg не знайдено")
+    print("ffmpeg не знайдено, пробуємо встановити...")
+    subprocess.run(["apt-get", "update"], check=True)
+    subprocess.run(["apt-get", "install", "-y", "ffmpeg"], check=True)
+
 
 
 bot = telebot.TeleBot("8042129376:AAFQ7oSmFfep7UwrP1xwm4XpyzUF90TmTg8")
