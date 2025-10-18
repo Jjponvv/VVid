@@ -60,12 +60,12 @@ def audio_to_voice(msg):
     os.remove(output_path)
 
     bot.send_message(msg.chat.id, "Done✅")
-    print("Audio")
+    user = msg.from_user
+    username = f"NAME:@{user.username} (id={user.id})" if user.username else f"NAME:{user.first_name} (id={user.id})"
+    print(f"[AUDIO] From {username}")
 
 @bot.message_handler(content_types=['video'])
 def video_to_circle(msg):
-    markup = InlineKeyboardMarkup()
-    markup.row_width = 2
     
     bot.send_message(msg.chat.id, "Starting...⏳")
 
@@ -113,6 +113,8 @@ def video_to_circle(msg):
     os.remove(output_path)
 
     bot.send_message(msg.chat.id, "Done✅")
-    print("Video")
+    user = msg.from_user
+    username = f"NAME:@{user.username} (id={user.id})" if user.username else f"NAME:{user.first_name} (id={user.id})"
+    print(f"[VIDEO] From {username}")
 
 bot.infinity_polling()
