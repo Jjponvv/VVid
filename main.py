@@ -5,8 +5,6 @@ import os
 import random
 import subprocess
 import tempfile
-import os
-import subprocess
 
 try:
     subprocess.run(["ffmpeg", "-version"], check=True)
@@ -16,8 +14,8 @@ except FileNotFoundError:
     subprocess.run(["apt-get", "install", "-y", "ffmpeg"], check=True)
 
 
-
-bot = telebot.TeleBot("8042129376:AAFQ7oSmFfep7UwrP1xwm4XpyzUF90TmTg8")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+bot = telebot.TeleBot(BOT_TOKEN)
 
 print("Started")
 
