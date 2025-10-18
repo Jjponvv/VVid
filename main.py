@@ -62,7 +62,7 @@ def audio_to_voice(msg):
     bot.send_message(msg.chat.id, "Done✅")
     user = msg.from_user
     username = f"NAME:@{user.username} (id={user.id})" if user.username else f"NAME:{user.first_name} (id={user.id})"
-    print(f"[AUDIO] From {username}")
+    print(f"[AUDIOSE] From {username}")
 
 @bot.message_handler(content_types=['video'])
 def video_to_circle(msg):
@@ -115,6 +115,6 @@ def video_to_circle(msg):
     bot.send_message(msg.chat.id, "Done✅")
     user = msg.from_user
     username = f"NAME:@{user.username} (id={user.id})" if user.username else f"NAME:{user.first_name} (id={user.id})"
-    print(f"[VIDEO] From {username}")
+    print(f"[VIDEOSE] From {username}")
 
 bot.infinity_polling()
